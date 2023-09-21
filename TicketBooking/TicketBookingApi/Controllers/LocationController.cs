@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using TicketBookingApi.Data;
 using TicketBookingApi.DTO.Location;
 using TicketBookingApi.Models;
 
@@ -10,11 +11,20 @@ namespace TicketBookingApi.Controllers
     [ApiController]
     public class LocationController : ControllerBase
     {
-        [HttpPost]
-        public ActionResult<createLocationDto> Create([FromBody] createLocationDto locationDto)
+        private readonly ApplicationDbContext _dbContext;
+
+        // Constructor 
+        public LocationController(ApplicationDbContext dbContext)
         {
-            var location = new createLocationDto();
-            return location;
+            _dbContext = dbContext;
+        }
+
+        [HttpPost]
+        public ActionResult<Location> Create([FromBody] Location location)
+        {
+            _dbContext.Locations.Add(location);
+            _dbContext.SaveChanges();
+            return Ok();
         }
 
         //[HttpGet]
