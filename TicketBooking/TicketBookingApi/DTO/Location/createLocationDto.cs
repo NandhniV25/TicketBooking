@@ -2,7 +2,7 @@
 
 namespace TicketBookingApi.DTO.Location
 {
-    public class createLocationDto
+    public class CreateLocationDto
     {
         [Required]
         public string cityName { get; set; } = string.Empty;

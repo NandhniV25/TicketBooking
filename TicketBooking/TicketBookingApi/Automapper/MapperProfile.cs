@@ -8,7 +8,7 @@ namespace TicketBookingApi.Automapper
     {
         public MapperProfile()
         {
-            CreateMap<Location, createLocationDto>().ReverseMap();
+            CreateMap<Location, CreateLocationDto>().ReverseMap();
         }
     }
 }

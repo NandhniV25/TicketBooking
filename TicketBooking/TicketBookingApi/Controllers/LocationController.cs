@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
 using TicketBookingApi.Data;
@@ -13,24 +14,23 @@ namespace TicketBookingApi.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
 
+        private readonly IMapper _mapper;
+
         // Constructor 
-        public LocationController(ApplicationDbContext dbContext)
+        public LocationController(ApplicationDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public ActionResult<Location> Create([FromBody] Location location)
+        public ActionResult<CreateLocationDto> Create([FromBody] CreateLocationDto createLocationDto)
         {
+            var location = _mapper.Map<Location>(createLocationDto);  
             _dbContext.Locations.Add(location);
             _dbContext.SaveChanges();
             return Ok();
         }
 
-        //[HttpGet]
-        //public Task<ActionResult<IEnumerable<LocationDto>>> GetAll ()
-        //{
-        //    return Ok();
-        //}
     }
 }
