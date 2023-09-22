@@ -19,5 +19,12 @@ namespace EmployeeRepository.Repository.Employee
         {
             return _dbContext.Employees.ToList();
         }
+
+        public int SaveEmployee(EmployeeEntity entity)
+        {
+            _dbContext.Employees.Add(entity);
+            _dbContext.SaveChanges();
+            return entity.Id;
+        }
     }
 }

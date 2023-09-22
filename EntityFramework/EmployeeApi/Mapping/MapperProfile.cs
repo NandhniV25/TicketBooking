@@ -9,6 +9,7 @@ namespace EmployeeApi.Mapping
         public MapperProfile()
         {
              CreateMap<EmployeeModel, EmployeeEntity>().ReverseMap();
+             CreateMap<CreateEmployeeModel, EmployeeEntity>().ReverseMap();
         }
     }
 }

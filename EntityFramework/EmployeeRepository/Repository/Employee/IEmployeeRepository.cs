@@ -10,5 +10,6 @@ namespace EmployeeRepository.Repository.Employee
     public interface IEmployeeRepository
     {
         List<EmployeeEntity> GetAll();
+        int SaveEmployee(EmployeeEntity entity);
     }
 }

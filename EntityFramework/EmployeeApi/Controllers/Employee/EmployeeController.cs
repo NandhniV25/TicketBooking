@@ -20,5 +20,11 @@ namespace EmployeeApi.Controllers.Employee
         {
             return _employeeService.GetAll();
         }
+
+        [HttpPost]
+        public ActionResult<int> SaveEmployee(CreateEmployeeModel model)
+        {
+            return _employeeService.SaveEmployee(model);
+        }
     }
 }

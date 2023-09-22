@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EmployeeApi.Models.Employee;
+using EmployeeRepository.Entity.Employee;
 using EmployeeRepository.Repository.Employee;
 
 namespace EmployeeApi.Service.Employee
@@ -19,6 +20,12 @@ namespace EmployeeApi.Service.Employee
             var employees = _employeeRepository.GetAll();
             var emp = _mapper.Map<List<EmployeeModel>>(employees);
             return emp;
+        }
+
+        public int SaveEmployee(CreateEmployeeModel model)
+        {
+            var employeeEntity = _mapper.Map<EmployeeEntity>(model);
+            return _employeeRepository.SaveEmployee(employeeEntity);
         }
     }
 }
