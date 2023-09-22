@@ -6,5 +6,7 @@ namespace EmployeeApi.Service.Employee
     {
         List<EmployeeModel> GetAll();
         int SaveEmployee(CreateEmployeeModel model);
+        void DeleteEmployee(int id);
+        EmployeeModel GetEmployeeId(int id);
     }
 }

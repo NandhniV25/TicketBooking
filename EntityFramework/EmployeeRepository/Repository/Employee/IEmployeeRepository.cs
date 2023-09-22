@@ -11,5 +11,7 @@ namespace EmployeeRepository.Repository.Employee
     {
         List<EmployeeEntity> GetAll();
         int SaveEmployee(EmployeeEntity entity);
+        void DeleteEmployee(int id);
+        EmployeeEntity GetEmployeeById(int id);
     }
 }

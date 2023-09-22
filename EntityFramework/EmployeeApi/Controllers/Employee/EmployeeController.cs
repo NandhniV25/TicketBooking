@@ -26,5 +26,30 @@ namespace EmployeeApi.Controllers.Employee
         {
             return _employeeService.SaveEmployee(model);
         }
+
+        [HttpGet("{id:int}")]
+        public ActionResult<EmployeeModel> GetEmployeeById(int id) 
+        {
+            return _employeeService.GetEmployeeId(id);
+        }
+
+        [HttpDelete("{id:int}")]
+        public ActionResult DeleteEmployee(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var empEnity = _employeeService.GetEmployeeId(id);
+
+            if (empEnity == null)
+            {
+                return NotFound();
+            }
+
+            _employeeService.DeleteEmployee(id);
+            return Ok();
+        }
     }
 }

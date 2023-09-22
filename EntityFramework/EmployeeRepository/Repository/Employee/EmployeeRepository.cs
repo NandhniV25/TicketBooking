@@ -15,9 +15,23 @@ namespace EmployeeRepository.Repository.Employee
         {
             _dbContext = dbContext;
         }
+
+        public void DeleteEmployee(int id)
+        {
+            var entity = GetEmployeeById(id);
+            _dbContext.Employees.Remove(entity);
+            _dbContext.SaveChanges();
+        }
+
         public List<EmployeeEntity> GetAll()
         {
             return _dbContext.Employees.ToList();
+        }
+
+        public EmployeeEntity GetEmployeeById(int id)
+        {
+            var entity = _dbContext.Employees.FirstOrDefault(x => x.Id == id);
+            return entity;
         }
 
         public int SaveEmployee(EmployeeEntity entity)
