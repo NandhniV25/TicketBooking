@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketApi.Models.City;
+using TicketApi.Service.City;
 
 namespace TicketApi.Controllers.City
 {
@@ -8,6 +9,13 @@ namespace TicketApi.Controllers.City
     [ApiController]
     public class CityController : ControllerBase
     {
+        private readonly ICityService _cityService;
+
+        public CityController(ICityService cityService)
+        {
+             _cityService = cityService;
+        }
+
         [HttpGet]
         public ActionResult<List<CityModel>> GetAll()
         {
