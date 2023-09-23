@@ -29,5 +29,10 @@ namespace TicketRepository.Repository.City
         {
             return _dbContext.Cities.ToList();
         }
+
+        public CityEntity GetCityById(int id)
+        {
+            return _dbContext.Cities.FirstOrDefault(c => c.Id == id);
+        }
     }
 }

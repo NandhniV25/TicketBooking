@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using TicketApi.AutoMapper;
 using TicketApi.Service.City;
+using TicketApi.Service.Ground;
 using TicketRepository.Data;
 using TicketRepository.Repository.City;
+using TicketRepository.Repository.Ground;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddAutoMapper(typeof(MapperProfile));
  
 builder.Services.AddTransient<ICityService, CityService>();
 builder.Services.AddTransient<ICityRepository, CityRepository>();
+
+builder.Services.AddTransient<IGroundRepository, GroundRepository>();
+builder.Services.AddTransient<IGroundService, GroundService>();
 
 #region Configure Database
 

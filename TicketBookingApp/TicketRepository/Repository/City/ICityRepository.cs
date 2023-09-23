@@ -11,5 +11,6 @@ namespace TicketRepository.Repository.City
     {
         List<CityEntity> GetAll();
         int CreateCity(CityEntity city);
+        CityEntity GetCityById(int id);
     }
 }
