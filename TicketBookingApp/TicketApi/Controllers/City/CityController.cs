@@ -19,13 +19,12 @@ namespace TicketApi.Controllers.City
         [HttpGet]
         public ActionResult<List<CityModel>> GetAll()
         {
-            var l = new List<CityModel>();
-            return l;
+            return _cityService.GetAll();
         }
         [HttpPost]
         public ActionResult<int> CreateCity(CreateCityModel model)
         {
-            return Ok(model);
+            return _cityService.CreateCity(model);
         }
     }
 }
