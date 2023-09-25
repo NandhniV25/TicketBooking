@@ -9,7 +9,7 @@ namespace TicketApi.Models.Court
         public int Id { get; set; }
         [Required]
         public string CourtName { get; set; }
-        public GroundModel Ground { get; set; }
+        [Required]
         public int GroundId { get; set; }
     }
 }

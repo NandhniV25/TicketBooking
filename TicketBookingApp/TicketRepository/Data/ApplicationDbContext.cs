@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TicketRepository.Entity.City;
+using TicketRepository.Entity.Court;
 using TicketRepository.Entity.Ground;
 
 namespace TicketRepository.Data
@@ -17,5 +18,6 @@ namespace TicketRepository.Data
         }
         public DbSet<CityEntity> Cities { get; set; }
         public DbSet<GroundEntity> Grounds { get; set; }
+        public DbSet<CourtEntity> Courts { get; set; }
     }
 }
