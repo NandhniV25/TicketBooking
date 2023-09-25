@@ -3,10 +3,12 @@ using TicketApi.AutoMapper;
 using TicketApi.Service.City;
 using TicketApi.Service.Court;
 using TicketApi.Service.Ground;
+using TicketApi.Service.Section;
 using TicketRepository.Data;
 using TicketRepository.Repository.City;
 using TicketRepository.Repository.Court;
 using TicketRepository.Repository.Ground;
+using TicketRepository.Repository.Section;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,9 @@ builder.Services.AddTransient<IGroundService, GroundService>();
 
 builder.Services.AddTransient<ICourtRepository, CourtRepository>();
 builder.Services.AddTransient<ICourtService, CourtService>();
+
+builder.Services.AddTransient<ISectionRepository, SectionRepository>();
+builder.Services.AddTransient<ISectionService, SectionService>();
 
 #region Configure Database
 
