@@ -27,5 +27,10 @@ namespace TicketRepository.Repository.Ground
         {
             return _dbContext.Grounds.ToList();
         }
+
+        public GroundEntity GetGroundById(int id)
+        {
+            return _dbContext.Grounds.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

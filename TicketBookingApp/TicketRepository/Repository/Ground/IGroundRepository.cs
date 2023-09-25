@@ -11,5 +11,6 @@ namespace TicketRepository.Repository.Ground
     {
         List<GroundEntity> GetAll();
         int CreateGround(GroundEntity entity);
+        GroundEntity GetGroundById(int id);
     }
 }
