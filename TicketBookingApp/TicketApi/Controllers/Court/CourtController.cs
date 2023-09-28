@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TicketApi.Models.Court;
+using TicketApi.Models.Ground;
 using TicketApi.Service.Court;
 
 namespace TicketApi.Controllers.Court
@@ -19,6 +20,11 @@ namespace TicketApi.Controllers.Court
         public ActionResult<List<CourtModel>> GetAll()
         {
             return _courtService.GetAll();
+        }
+        [HttpGet("{id:int}")]
+        public ActionResult<CourtModel> GetById(int id)
+        {
+            return _courtService.GetById(id);
         }
         [HttpPost]
         public ActionResult<int> CreateCourt(CreateCourtModel model)

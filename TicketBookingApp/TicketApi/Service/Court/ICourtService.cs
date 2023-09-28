@@ -6,5 +6,6 @@ namespace TicketApi.Service.Court
     {
         List<CourtModel> GetAll();
         int CreateCourt(CreateCourtModel model);
+        CourtModel GetById(int id);
     }
 }

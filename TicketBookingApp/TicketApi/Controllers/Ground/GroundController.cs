@@ -16,9 +16,14 @@ namespace TicketApi.Controllers.Ground
             _groundService = groundService;
         }
         [HttpGet]
-        public ActionResult<List<GroundModel>> GetAll()
+        public ActionResult<List<GroundModelWithVenues>> GetAll()
         {
             return _groundService.GetAll();
+        }
+        [HttpGet("{id:int}")]
+        public ActionResult<GroundModelWithVenues> GetGroundById(int id)
+        {
+            return _groundService.GetGroundById(id);
         }
         [HttpPost]
         public ActionResult<int> CreateGround(CreateGroundModel ground)

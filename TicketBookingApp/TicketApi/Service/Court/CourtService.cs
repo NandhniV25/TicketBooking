@@ -46,5 +46,21 @@ namespace TicketApi.Service.Court
                    }
             return courtLists; 
         }
+
+        public CourtModel GetById(int id)
+        {
+            var courtEntity = _courtRepository.GetById(id);
+            var courtModel = _mapper.Map<CourtModel>(courtEntity);
+
+            var groundEntity = _groundRepository.GetGroundById(courtEntity.GroundId);
+            var groundModel = _mapper.Map<GroundModel>(groundEntity);
+
+            var cityEntity = _cityRepository.GetCityById(groundModel.City.Id);
+            var cityModel = _mapper.Map<CityModel>(cityEntity);
+
+            groundModel.City = cityModel;
+            courtModel.Ground = groundModel;
+            return courtModel;
+        }
     }
 }

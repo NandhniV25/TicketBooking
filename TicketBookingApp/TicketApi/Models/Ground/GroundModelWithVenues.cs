@@ -4,7 +4,7 @@ using TicketApi.Models.Court;
 
 namespace TicketApi.Models.Ground
 {
-    public class GroundModel
+    public class GroundModelWithVenues
     {
         [Key]
         public int Id { get; set; }
@@ -12,6 +12,9 @@ namespace TicketApi.Models.Ground
         public string GroundName { get; set; }
         [Required]
         public CityModel City { get; set; }
-        
+        //[Required]
+        //public List<int> CourtId { get; set; }
+        [Required]
+        public List<CourtGroundModel> Courts { get; set; }
     }
 }

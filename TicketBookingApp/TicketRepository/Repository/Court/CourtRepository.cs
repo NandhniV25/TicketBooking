@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,16 @@ namespace TicketRepository.Repository.Court
         public List<CourtEntity> GetAll()
         {
             return _dbContext.Courts.ToList();
+        }
+
+        public CourtEntity GetById(int id)
+        {
+            return _dbContext.Courts.FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<CourtEntity> GetCourtById(int id)
+        {
+            return _dbContext.Courts.Where(x => x.GroundId == id).ToList();
         }
     }
 }

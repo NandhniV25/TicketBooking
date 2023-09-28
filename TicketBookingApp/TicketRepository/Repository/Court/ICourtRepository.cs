@@ -11,5 +11,7 @@ namespace TicketRepository.Repository.Court
     {
         List<CourtEntity> GetAll();
         int CreateCourt(CourtEntity entity);
+        List<CourtEntity> GetCourtById(int id);
+        CourtEntity GetById(int id);
     }
 }

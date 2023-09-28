@@ -26,5 +26,10 @@ namespace TicketRepository.Repository.Section
         {
             return _dbContext.Sections.ToList();
         }
+
+        public List<SectionEntity> GetSectionById(int id)
+        {
+            return _dbContext.Sections.Where(x => x.CourtId == id).ToList();
+        }
     }
 }

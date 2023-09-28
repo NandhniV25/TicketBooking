@@ -16,10 +16,15 @@ namespace TicketApi.AutoMapper
         {
             CreateMap<CityModel, CityEntity>().ReverseMap();    
             CreateMap<CreateCityModel, CityEntity>().ReverseMap();
+
             CreateMap<GroundModel, GroundEntity>().ReverseMap();
             CreateMap<CreateGroundModel, GroundEntity>().ReverseMap();
+            CreateMap<GroundModelWithVenues, GroundEntity>().ReverseMap();
+
             CreateMap<CourtModel, CourtEntity>().ReverseMap();
             CreateMap<CreateCourtModel,  CourtEntity>().ReverseMap();
+            CreateMap<CourtGroundModel, CourtEntity>().ReverseMap();
+
             CreateMap<SectionModel, SectionEntity>().ReverseMap();
             CreateMap<CreateSectionModel, SectionEntity>().ReverseMap();
         }
