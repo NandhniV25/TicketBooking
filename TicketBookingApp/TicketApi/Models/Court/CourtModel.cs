@@ -12,7 +12,5 @@ namespace TicketApi.Models.Court
         public string CourtName { get; set; }
         [Required]
         public GroundModel Ground { get; set; }
-        [Required]
-        public List<SectionModel> Sections { get; set; }
     }
 }

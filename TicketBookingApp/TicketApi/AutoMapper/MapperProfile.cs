@@ -24,6 +24,7 @@ namespace TicketApi.AutoMapper
             CreateMap<CourtModel, CourtEntity>().ReverseMap();
             CreateMap<CreateCourtModel,  CourtEntity>().ReverseMap();
             CreateMap<CourtGroundModel, CourtEntity>().ReverseMap();
+            CreateMap<CourtSectionModel, CourtEntity>().ReverseMap();
 
             CreateMap<SectionModel, SectionEntity>().ReverseMap();
             CreateMap<CreateSectionModel, SectionEntity>().ReverseMap();

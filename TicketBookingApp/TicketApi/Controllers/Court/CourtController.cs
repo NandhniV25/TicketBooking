@@ -22,7 +22,7 @@ namespace TicketApi.Controllers.Court
             return _courtService.GetAll();
         }
         [HttpGet("{id:int}")]
-        public ActionResult<CourtModel> GetById(int id)
+        public ActionResult<CourtSectionModel> GetById(int id)
         {
             return _courtService.GetById(id);
         }

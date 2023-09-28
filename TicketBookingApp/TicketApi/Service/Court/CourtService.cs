@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
+using System.Net.WebSockets;
 using TicketApi.Models.City;
 using TicketApi.Models.Court;
 using TicketApi.Models.Ground;
+using TicketApi.Models.Section;
 using TicketRepository.Entity.Court;
 using TicketRepository.Entity.Ground;
 using TicketRepository.Repository.City;
 using TicketRepository.Repository.Court;
 using TicketRepository.Repository.Ground;
+using TicketRepository.Repository.Section;
 
 namespace TicketApi.Service.Court
 {
@@ -17,12 +20,14 @@ namespace TicketApi.Service.Court
 
         private readonly IGroundRepository _groundRepository;
         private readonly ICityRepository _cityRepository;
-        public CourtService(ICourtRepository courtRepository, IMapper mapper, IGroundRepository groundRepository, ICityRepository cityRepository)
+        private readonly ISectionRepository _sectionRepository;
+        public CourtService(ICourtRepository courtRepository, IMapper mapper, IGroundRepository groundRepository, ICityRepository cityRepository, ISectionRepository sectionRepository)
         {
             _courtRepository = courtRepository; 
             _mapper = mapper;
             _groundRepository = groundRepository;
             _cityRepository = cityRepository;
+            _sectionRepository = sectionRepository;
         }
         public int CreateCourt(CreateCourtModel model)
         {
@@ -47,10 +52,10 @@ namespace TicketApi.Service.Court
             return courtLists; 
         }
 
-        public CourtModel GetById(int id)
+        public CourtSectionModel GetById(int id)
         {
             var courtEntity = _courtRepository.GetById(id);
-            var courtModel = _mapper.Map<CourtModel>(courtEntity);
+            var courtModel = _mapper.Map<CourtSectionModel>(courtEntity);
 
             var groundEntity = _groundRepository.GetGroundById(courtEntity.GroundId);
             var groundModel = _mapper.Map<GroundModel>(groundEntity);
@@ -58,8 +63,13 @@ namespace TicketApi.Service.Court
             var cityEntity = _cityRepository.GetCityById(groundModel.City.Id);
             var cityModel = _mapper.Map<CityModel>(cityEntity);
 
+            var sectionEntity = _sectionRepository.GetSectionById(courtEntity.Id);
+            var sectionModel = _mapper.Map<List<SectionModel>>(sectionEntity);
+
             groundModel.City = cityModel;
             courtModel.Ground = groundModel;
+            courtModel.Sections = sectionModel;
+
             return courtModel;
         }
     }
