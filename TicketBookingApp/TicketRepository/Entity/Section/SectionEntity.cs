@@ -13,6 +13,8 @@ namespace TicketRepository.Entity.Section
         public string SectionName { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+        public double XOffset { get; set; }
+        public double YOffset { get; set; }
         public CourtEntity Court { get; set; }      
         public int CourtId { get; set; }
     }

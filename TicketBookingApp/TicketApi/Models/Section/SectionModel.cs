@@ -13,6 +13,10 @@ namespace TicketApi.Models.Section
         [Required]
         public int Columns { get; set; }
         [Required]
+        public double XOffset { get; set; }
+        [Required] 
+        public double YOffset { get; set ; }
+        [Required]
         public int CourtId { get; set; }
     }
 }
