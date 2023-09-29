@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TicketRepository.Entity.City;
 using TicketRepository.Entity.Court;
 using TicketRepository.Entity.Ground;
+using TicketRepository.Entity.Seat;
 using TicketRepository.Entity.Section;
 
 namespace TicketRepository.Data
@@ -21,5 +22,6 @@ namespace TicketRepository.Data
         public DbSet<GroundEntity> Grounds { get; set; }
         public DbSet<CourtEntity> Courts { get; set; }
         public DbSet<SectionEntity> Sections { get; set; }
+        public DbSet<SeatEntity> Seats { get; set; }
     }
 }
