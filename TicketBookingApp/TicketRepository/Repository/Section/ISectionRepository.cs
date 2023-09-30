@@ -12,5 +12,6 @@ namespace TicketRepository.Repository.Section
         List<SectionEntity> GetAll();
         int CreateSection(SectionEntity entity);
         List<SectionEntity> GetSectionById(int id);
+        SectionEntity GetById(int id);
     }
 }

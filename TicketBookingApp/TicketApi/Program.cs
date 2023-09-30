@@ -8,6 +8,7 @@ using TicketRepository.Data;
 using TicketRepository.Repository.City;
 using TicketRepository.Repository.Court;
 using TicketRepository.Repository.Ground;
+using TicketRepository.Repository.Seat;
 using TicketRepository.Repository.Section;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,8 @@ builder.Services.AddTransient<ICourtService, CourtService>();
 
 builder.Services.AddTransient<ISectionRepository, SectionRepository>();
 builder.Services.AddTransient<ISectionService, SectionService>();
+
+builder.Services.AddTransient<ISeatRepository, SeatRepository>();
 
 #region Configure Database
 

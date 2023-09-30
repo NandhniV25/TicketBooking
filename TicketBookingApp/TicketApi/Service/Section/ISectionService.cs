@@ -6,5 +6,6 @@ namespace TicketApi.Service.Section
     {
         List<SectionModel> GetAll();
         int CreateSection(CreateSectionModel model);
+        SectionSeatModel GetSectionById(int id);
     }
 }

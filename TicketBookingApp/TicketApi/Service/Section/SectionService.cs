@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
+using TicketApi.Models.Seat;
 using TicketApi.Models.Section;
 using TicketRepository.Entity.Section;
+using TicketRepository.Repository.Seat;
 using TicketRepository.Repository.Section;
 
 namespace TicketApi.Service.Section
@@ -9,10 +12,12 @@ namespace TicketApi.Service.Section
     {
         private readonly ISectionRepository _sectionRepository;
         private readonly IMapper _mapper;
-        public SectionService(ISectionRepository sectionRepository, IMapper mapper)
+        private readonly ISeatRepository _seatRepository;
+        public SectionService(ISectionRepository sectionRepository, IMapper mapper, ISeatRepository seatRepository)
         {
             _sectionRepository = sectionRepository;
             _mapper = mapper;
+            _seatRepository = seatRepository;
         }
         public int CreateSection(CreateSectionModel model)
         {
@@ -22,6 +27,19 @@ namespace TicketApi.Service.Section
         public List<SectionModel> GetAll()
         {
             return _mapper.Map<List<SectionModel>>(_sectionRepository.GetAll());
+        }
+
+        public SectionSeatModel GetSectionById(int id)
+        {
+            var entity = _sectionRepository.GetById(id);
+            var seatsEntity = _seatRepository.GetSeatsBySectionId(id);
+            var seatModel = _mapper.Map<List<SeatModel>>(seatsEntity);
+            
+            var sectionSeatModel = _mapper.Map<SectionSeatModel>(entity);
+
+            sectionSeatModel.Seats = seatModel;
+
+            return sectionSeatModel;
         }
     }
 }

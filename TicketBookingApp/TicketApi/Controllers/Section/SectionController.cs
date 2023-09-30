@@ -24,5 +24,10 @@ namespace TicketApi.Controllers.Section
         {
             return _sectionService.CreateSection(model);
         }
+        [HttpGet("{id:int}")]
+        public ActionResult<SectionSeatModel> GetSectionById(int id) 
+        {
+            return _sectionService.GetSectionById(id);
+        }
     }
 }
